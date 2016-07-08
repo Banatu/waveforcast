@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="dd"></p>
+<p id="qq"></p>
+<p id="rr"></p>
+
+<script>
+var xhttp;
+xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+        myFunction(xhttp);
+    }
+};
+xhttp.open("GET", "books.xml", true);
+xhttp.send();
+
+function myFunction(xml) {
+    var y,z,x, i, txt,kk,tt, xmlDoc;
+    xmlDoc = xml.responseXML;
+    txt = "";
+    x = xmlDoc.getElementsByTagName("title");
+y= xmlDoc.getElementsByTagName("author");
+z = xmlDoc.getElementsByTagName("year");
+
+
+
+    for (i = 0; i < x.length; i++) {
+        txt += x[i].childNodes[0].nodeValue + "<br>";
+kk += y[i].childNodes[0].nodeValue + "<br>";
+tt += z[i].childNodes[0].nodeValue + "<br>";
+
+
+    }
+    document.getElementById("dd").innerHTML = txt;
+ document.getElementById("qq").innerHTML =kk;
+ document.getElementById("rr").innerHTML = tt;
+
+
+
+
+
+}
+</script>
+</body>
+</html>
+
